@@ -71,10 +71,24 @@ function MessageBox({ step }) {
                         }}
                         >
                         <div className="relative">
-                            <div className="bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg font-bold text-2xl drop-shadow-[0_0_2px_black]">
-                            {msg.text}
+                            <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-2xl shadow-lg font-bold text-2xl drop-shadow-[0_0_2px_black]">
+                                {msg.text}
                             </div>
-                            <div className={`absolute w-3 h-3 bg-purple-600 rotate-45 bottom-[-6px] shadow-lg ${msg.tail ? 'left-4' : 'right-4'}`}></div>
+                            {/* shadow under tail */}
+                            <div
+                                className={`absolute w-3 h-3 rotate-45 ${
+                                msg.tail ? 'left-4' : 'right-4'
+                                } bottom-[-7px] bg-black/30 z-0`}
+                                style={{ transform: 'rotate(45deg) translateY(2px)' }}
+                            ></div>
+                            {/* text bubble tail */}
+                            <div
+                                className={`absolute w-3 h-3 rotate-45 ${
+                                msg.tail ? 'left-4' : 'right-4'
+                                } bottom-[-6px] z-10 ${
+                                msg.tail ? 'bg-purple-500' : 'bg-purple-600'
+                                }`}
+                            ></div>
                         </div>
                         </motion.div>
                     )
