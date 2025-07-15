@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Isometric from "./components/IsometricComponent";
 import MessageBox from "./components/MessageBox";
+import NameBubble from "./components/NameBubble";
+import TypingBubble from "./components/TypingBubble";
 
 function App() {
   const [step, setStep] = useState(0);
+  const [showTyping, setShowTyping] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowTyping(false);
+    }, 2000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,6 +24,13 @@ function App() {
 
   return (
     <>
+    <div style={{
+      minHeight: "100vh",
+      backgroundColor: "#1E2432",
+      backgroundImage: "radial-gradient(circle, #4A5568 1px, transparent 2px)",
+      backgroundSize: "30px 30px",
+      backgroundAttachment: "fixed",
+    }}>
     <div className="w-full bg-gray-900 text-white shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="text-2xl font-bold tracking-wide">Austin Zhang</div>
@@ -27,17 +44,15 @@ function App() {
     </div>
 
 
-    <div className="flex items-end justify-center relative p-8 mt-20">
-      <div className="absolute left-0 top-0 translate-x-[40%] translate-y-[20%]">
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white py-3 rounded-xl shadow-lg relative inline-block">
-          <h1 className="text-4xl font-bold px-6">Hi, I'm Austin! I'm a...</h1>
-          <div className="absolute left-4 bottom-[-7px] w-4 h-4 bg-purple-500 rotate-45 rounded-sm shadow-lg"></div>
-      </div>
+    <div className="flex items-end justify-center relative p-8">
+      <div className="absolute left-0 top-0 translate-x-[30%] translate-y-[40%]">
+        {showTyping ? <TypingBubble /> : <NameBubble />}
         <MessageBox step={step} />
       </div>
-      <div className="translate-x-[8rem]">
+      <div className="translate-x-[10rem] translate-y-[1rem]">
         <Isometric className="w-[30rem] h-auto" step={step} />
       </div>
+    </div>
     </div>
     </>
   );

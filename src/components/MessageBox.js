@@ -11,7 +11,7 @@ function MessageBox({ step }) {
         "Hackathon Organizer",
         "CS Tutor",
         "Math Researcher",
-        "Rutgers Scarlet Knight"
+        "Scarlet Knight"
     ];
 
     useEffect(() => {
@@ -51,7 +51,6 @@ function MessageBox({ step }) {
         <div className="relative w-[300px] h-[200px] mt-4 ml-6">
             <AnimatePresence>
                 {messages.map(msg => {
-                    const tail = Math.random() < 0.5;
                     return (
                         <motion.div
                         key={msg.id}
@@ -71,20 +70,20 @@ function MessageBox({ step }) {
                         }}
                         >
                         <div className="relative">
-                            <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-2xl shadow-lg font-bold text-2xl drop-shadow-[0_0_2px_black]">
+                            <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg font-bold text-2xl drop-shadow-[0_0_2px_black]">
                                 {msg.text}
                             </div>
                             {/* shadow under tail */}
                             <div
                                 className={`absolute w-3 h-3 rotate-45 ${
-                                msg.tail ? 'left-4' : 'right-4'
+                                msg.tail ? 'left-7' : 'right-7'
                                 } bottom-[-7px] bg-black/30 z-0`}
                                 style={{ transform: 'rotate(45deg) translateY(2px)' }}
                             ></div>
                             {/* text bubble tail */}
                             <div
                                 className={`absolute w-3 h-3 rotate-45 ${
-                                msg.tail ? 'left-4' : 'right-4'
+                                msg.tail ? 'left-7' : 'right-7'
                                 } bottom-[-6px] z-10 ${
                                 msg.tail ? 'bg-purple-500' : 'bg-purple-600'
                                 }`}
