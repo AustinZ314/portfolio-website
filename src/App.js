@@ -4,6 +4,7 @@ import MessageBox from "./components/MessageBox";
 import NameBubble from "./components/NameBubble";
 import TypingBubble from "./components/TypingBubble";
 //import profileImage from "./assets/pfp.jpg";
+import { ImageCarousel } from "./components/ImageCarousel";
 
 function App() {
   const [step, setStep] = useState(0);
@@ -74,12 +75,18 @@ function App() {
       {/* projects */}
       <section className="bg-[#000000] py-24">
         <div className="max-w-6xl mx-auto px-8">
-          <h2 className="text-3xl font-bold mb-8">Projects</h2>
+          <h2 className="text-3xl font-bold flex items-center justify-center mb-8">Projects</h2>
           
         </div>
       </section>
 
-
+      {/* club pictures :D */}
+      <section className="bg-gray-900 text-white py-20">
+        <h2 className="text-4xl font-bold text-center mb-10">Community Involvement</h2>
+        <div className="h-[600px]">
+          <ImageCarousel />
+        </div>
+      </section>
     </>
   );
 }
